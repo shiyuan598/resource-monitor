@@ -79,16 +79,17 @@ let str = `化阳曦
    秋巍然
    都山柳`;
 
-let location = ["虎牢关", "剑阁", "子午谷"];
-let data = str.split("\n").map((item, index) => ({
-    id: index + 1,
-    name: item.trim(),
-    progress: Math.ceil(Math.random() * 100),
-    total: Math.floor((500 + Math.random() * 2000) * 1024 * 1024),
-    location: location[Math.ceil(Math.random() * 10) % 3]
-}));
-console.info(data.slice(0, 3));
+let location = ["阳澄湖", "太湖", "苏州"];
+const getData = () => {
+    return str.split("\n").map((item, index) => ({
+        id: index + 1,
+        name: item.trim(),
+        progress: Math.ceil(Math.random() * 100),
+        total: Math.floor((5 + Math.random() * 2000) * 1024 * 1024),
+        location: location[Math.ceil(Math.random() * 10) % 3]
+    }));
+}
 
 export default {
-    data
+    getData: getData
 };
