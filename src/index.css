@@ -1,0 +1,63 @@
+@import "~antd/dist/antd.dark.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* 滚动条 */
+*::-webkit-scrollbar {
+    height: 6px;
+    background-color: #2a2a2a;
+    width: 6px;
+  }
+  
+  
+  *::-webkit-scrollbar-thumb {
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    background-color: #3a3a3a;
+  }
+
+/* Default font size */
+.custom-progress {
+    font-size: 16px;
+  }
+  
+  /* Adjust font size for small screens */
+  @media screen and (max-width: 576px) {
+    .custom-progress {
+      font-size: 14px;
+    }
+  }
+  
+  /* Adjust font size for medium screens */
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    .custom-progress {
+      font-size: 16px;
+    }
+  }
+  
+  /* Adjust font size for large screens */
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    .custom-progress {
+      font-size: 18px;
+    }
+  }
+  
+  /* Adjust font size for extra large screens */
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    .custom-progress {
+      font-size: 20px;
+    }
+  }
+  
+  /* Adjust font size for larger screens (greater than 1200px) */
+  @media screen and (min-width: 1200px) {
+    .custom-progress {
+      font-size: 22px;
+    }
+  }
+  
