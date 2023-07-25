@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Main from "./views/main/index";
-import getWebSocekt, {socketIo} from "./api/socket";
+import { useWebSocket } from "./components/WebSocketService";
 
 function App() {
-    getWebSocekt().onmessage = (event) => {
-        const message = event.data;
-        console.log("App中收到消息:", message);
-    };
+    const { socket, message } = useWebSocket();
+    useEffect(() => {
+        console.info("App收到消息:", message);
+    }, [message]);
+
     return (
         <Switch>
             <Route path="/main" render={() => <Main />}></Route>

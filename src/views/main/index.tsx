@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import fakeData from "../../api/fake";
 import { formatBytes } from "../../utils/tools";
 import { Progress } from "antd";
-import getWebSocekt, {socketIo} from "../../api/socket";
+import { useWebSocket } from "../../components/WebSocketService";
 
 export default function App() {
     const [diskList, setDiskList] = useState<any>([]);
+    const { socket, message } = useWebSocket();
     useEffect(() => {
-        getWebSocekt().onmessage = (event) => {
-            const message = event.data;
-            console.log("main中收到消息:", message);
-        };
+        console.info("main收到消息:", message);
+    }, [message]);
+    useEffect(() => {
         const runFetchData = () => {
             setDiskList(fakeData.getData().slice(0, 10));
             setTimeout(runFetchData, 6000);
