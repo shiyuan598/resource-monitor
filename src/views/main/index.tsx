@@ -8,14 +8,14 @@ export default function App() {
     useEffect(() => {
         setInterval(() => {
             setDiskList(fakeData.getData());
-        }, 10000);
+        }, 30000);
         
     }, []);
     return (
         <div className="grid grid-cols-3 sm:grid-cols-3 text-xs sm:text-xs md:grid-cols-5 md:text-small lg:grid-cols-8 lg:text-base sm:gap-2 md:gap-4 lg:gap-6 gap-4 p-4">
             {diskList.map((item: any) => (
                 <>
-                    <div key={item.id} className="border border-gray-800 text-center text-gray-300 relative">
+                    <div key={item.id} className="bg-[#141414] text-center text-gray-300 lg:text-[#bcbcbc] relative">
                         <div className="absolute left-0 bg-emerald-700 px-1">{item.location}</div>
                         <div className="mt-6">
                             <Progress
