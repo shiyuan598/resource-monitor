@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:9020";
 window.globalConfig = Object.freeze({
-    api: baseUrl + "/api"
+    api: "http://localhost:9020/api",
+    socketIo: "ws://localhost:9011/socket.io"
 });
