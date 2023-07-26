@@ -15,6 +15,7 @@ function App() {
             <Route path="/main" render={() => <Main />}></Route>
             <Route path="/log" render={() => <Log />}></Route>
             <Redirect from="/" to="/main" exact></Redirect>
+            <Redirect from="*" to="/" />
         </Switch>
     );
 }

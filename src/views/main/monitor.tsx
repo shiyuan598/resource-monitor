@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import fakeData from "../../api/fake";
 import { formatBytes } from "../../utils/tools";
-import { Progress } from "antd";
+import { Progress, Tooltip } from "antd";
+import { FileTextOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 import { useWebSocket } from "../../components/WebSocketService";
 
 export default function App() {
+    const history = useHistory();
     const [diskList, setDiskList] = useState<any>([]);
     const { socket, message } = useWebSocket();
     useEffect(() => {
@@ -17,8 +20,14 @@ export default function App() {
         };
         runFetchData();
     }, []);
+
+    const toLogPage = () => {
+        history.push("/log");
+    };
+
     return (
         <div className="grid grid-cols-3 sm:grid-cols-3 text-xs sm:text-xs md:grid-cols-5 md:text-small lg:grid-cols-8 lg:text-base sm:gap-2 md:gap-4 lg:gap-6 gap-4 p-4">
+            <Tooltip className="fixed right-2 top-2 z-10 font-bold text-base md:text-lg lg:text-xl" title="查看日志" placement="left"><FileTextOutlined onClick={toLogPage} /></Tooltip>
             {diskList.map((item: any) => (
                 <div
                     key={item.name}

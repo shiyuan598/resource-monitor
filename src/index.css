@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Default font size */
 .custom-progress .ant-progress-inner {
     font-size: 16px;
