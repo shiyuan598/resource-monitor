@@ -31,8 +31,8 @@ const App: React.FC = () => {
     const [list, setList] = useState<DataType[]>([]);
 
     useEffect(() => {
-        const size = 2;
-        const fakeDataUrl = `https://randomuser.me/api/?page=${pageNo}&results=${size}&inc=name,gender,email,location,dob,nat,picture`;
+        const pageSize = 6;
+        const fakeDataUrl = `https://randomuser.me/api/?page=${pageNo}&results=${pageSize}&inc=name,gender,email,location,dob,nat,picture`;
         setLoading(true);
         fetch(fakeDataUrl)
             .then((res) => res.json())
@@ -59,13 +59,7 @@ const App: React.FC = () => {
 
     const loadMore =
         !initLoading && !loading ? (
-            <div
-                style={{
-                    textAlign: "center",
-                    marginTop: 12,
-                    height: 32,
-                    lineHeight: "32px"
-                }}>
+            <div className="mt-6 text-center">
                 <Button onClick={onLoadMore}>查看更多...</Button>
             </div>
         ) : initLoading ? null : (
@@ -78,7 +72,9 @@ const App: React.FC = () => {
         <div className="p-4">
             <div className="flex justify-between font-bold text-base md:text-lg lg:text-xl">
                 <h2>日志管理</h2>
-                <Tooltip title="回到首页" placement="left"><HomeOutlined onClick={toHomePage} /></Tooltip>
+                <Tooltip title="回到首页" placement="left">
+                    <HomeOutlined onClick={toHomePage} />
+                </Tooltip>
             </div>
 
             <div className="clearfix mt-2">
