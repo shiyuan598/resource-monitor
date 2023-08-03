@@ -61,7 +61,7 @@ export default function App() {
     return (
         <div className="grid grid-cols-3 sm:grid-cols-3 text-xs sm:text-xs md:grid-cols-5 md:text-small lg:grid-cols-8 lg:text-base sm:gap-2 md:gap-4 lg:gap-6 gap-4 p-4 pt-6">
             <span className="fixed right-2 top-2 z-10 font-bold text-xs md:text-sm lg:text-base cursor-pointer hover:scale-110" onClick={toLogPage}>
-                <FileTextOutlined className="align-[1px]" /> 查看日志
+                <FileTextOutlined className="align-[2px]" /> 查看日志
             </span>
             {diskList.map((item: any) => (
                 <div

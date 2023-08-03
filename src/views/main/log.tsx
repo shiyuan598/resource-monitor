@@ -106,7 +106,7 @@ const App: React.FC = () => {
             <div className="flex justify-between font-bold text-base md:text-lg lg:text-xl">
                 <h2>日志管理</h2>
                 <span className="text-xs md:text-sm lg:text-base cursor-pointer hover:scale-110" onClick={toHomePage}>
-                    <HomeOutlined className="align-[1px]" /> 回到首页
+                    <HomeOutlined className="align-[2px]" /> 回到首页
                 </span>
             </div>
 
@@ -118,13 +118,13 @@ const App: React.FC = () => {
                     enterButton
                 />
                 <div className="float-right mr-4">
-                    <span className="mr-1">日志类型:</span>
+                    <span className="mr-1">类型:</span>
                     <Select
                         className="w-[80px] md:w-[120px] lg:w-[150px]"
                         allowClear
                         value={type ? type.toString() : ""}
                         defaultValue={"34"}
-                        placeholder="请选择错误类型"
+                        placeholder="请选择类型"
                         onChange={typeChange}
                         options={[
                             { value: "", label: "全部" },
@@ -144,7 +144,7 @@ const App: React.FC = () => {
                         <List.Item.Meta
                             title={
                                 <span>
-                                    <Tag color={getColorByType(item.type)}>{item.typename}</Tag>
+                                    <Tag color={getColorByType(item.type)}>{item.typename.toUpperCase()}</Tag>
                                     <Tag>{item.create_time}</Tag>
                                 </span>
                             }
