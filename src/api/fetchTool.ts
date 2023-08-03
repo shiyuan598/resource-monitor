@@ -35,7 +35,7 @@ const getAuthorization = () => {
 };
 export const get = (
     url: string,
-    params?: { [propName: string]: string | number | boolean | number[] },
+    params?: { [propName: string]: string | number | boolean | undefined | number[] },
     blob: boolean = false
 ) => {
     url = baseUrl + url;

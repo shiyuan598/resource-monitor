@@ -10,24 +10,59 @@ export default function App() {
     const history = useHistory();
     const [diskList, setDiskList] = useState<any>([]);
     const { socket, message } = useWebSocket();
+    const ip2address = (key: any) => {
+        let address = "未知地点";
+        switch (key) {
+            case "127.0.0.1":
+                address = "江枫渔火";
+                break;
+            case "127.0.0.2":
+                address = "鹭点烟汀";
+                break;
+            case "127.0.0.3":
+                address = "林外瑶山";
+                break;
+            default:
+                break;
+        }
+        return address;
+    };
+
     useEffect(() => {
-        console.info("main收到消息:", message);
+        if (!message) {
+            return;
+        }
+        const data = JSON.parse(message).data;
+        let arr = Object.keys(data).map((key) => {
+            let { ip, total_size, progress } = data[key];
+
+            return {
+                id: key,
+                name: key,
+                progress: progress,
+                total: total_size,
+                location: ip2address(ip)
+            };
+        });
+        setDiskList(arr);
     }, [message]);
-    useEffect(() => {
-        const runFetchData = () => {
-            setDiskList(fakeData.getData().slice(0, 10));
-            setTimeout(runFetchData, 6000);
-        };
-        runFetchData();
-    }, []);
+    // useEffect(() => {
+    //     const runFetchData = () => {
+    //         setDiskList(fakeData.getData().slice(0, 10));
+    //         setTimeout(runFetchData, 6000);
+    //     };
+    //     runFetchData();
+    // }, []);
 
     const toLogPage = () => {
         history.push("/log");
     };
 
     return (
-        <div className="grid grid-cols-3 sm:grid-cols-3 text-xs sm:text-xs md:grid-cols-5 md:text-small lg:grid-cols-8 lg:text-base sm:gap-2 md:gap-4 lg:gap-6 gap-4 p-4">
-            <Tooltip className="fixed right-2 top-2 z-10 font-bold text-base md:text-lg lg:text-xl" title="查看日志" placement="left"><FileTextOutlined onClick={toLogPage} /></Tooltip>
+        <div className="grid grid-cols-3 sm:grid-cols-3 text-xs sm:text-xs md:grid-cols-5 md:text-small lg:grid-cols-8 lg:text-base sm:gap-2 md:gap-4 lg:gap-6 gap-4 p-4 pt-6">
+            <span className="fixed right-2 top-2 z-10 font-bold text-xs md:text-sm lg:text-base cursor-pointer hover:scale-110" onClick={toLogPage}>
+                <FileTextOutlined className="align-[1px]" /> 查看日志
+            </span>
             {diskList.map((item: any) => (
                 <div
                     key={item.name}

@@ -1,7 +1,7 @@
 // WebSocketService.tsx
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const WebSocketContext = createContext<{ socket: WebSocket | null; message: string }>({
+const WebSocketContext = createContext<{ socket: WebSocket | null; message: any }>({
   socket: null,
   message: '',
 });
