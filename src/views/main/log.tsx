@@ -23,12 +23,6 @@ interface DataType {
     loading: boolean;
 }
 
-type MyComponentProps = {
-    children: string;
-    bordered?: boolean;
-    color?: string;
-};
-
 const App: React.FC = () => {
     const history = useHistory();
     const [pageNo, setPageNo] = useState(1);

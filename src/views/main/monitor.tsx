@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import fakeData from "../../api/fake";
 import { formatBytes } from "../../utils/tools";
 import { Progress, Tooltip } from "antd";
 import { FileTextOutlined } from "@ant-design/icons";
@@ -46,13 +45,6 @@ export default function App() {
         });
         setDiskList(arr);
     }, [message]);
-    // useEffect(() => {
-    //     const runFetchData = () => {
-    //         setDiskList(fakeData.getData().slice(0, 10));
-    //         setTimeout(runFetchData, 6000);
-    //     };
-    //     runFetchData();
-    // }, []);
 
     const toLogPage = () => {
         history.push("/log");
